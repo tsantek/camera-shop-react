@@ -6,10 +6,13 @@ const CartItem = props => {
     <div className="cart-item-container">
       <div className="name-price-item">
         <p>{item.name}</p>
-        <p>{item.price}</p>
       </div>
       <div className="remove-btn">
-        <button onClick={() => removeFromCart(item.id)}>REMOVE</button>
+        <i
+          style={{ fontSize: "25px", paddingTop: "10px" }}
+          class="fa fa-trash-o"
+          onClick={() => removeFromCart(item.id)}
+        />
       </div>
     </div>
   );

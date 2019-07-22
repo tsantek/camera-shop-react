@@ -24,7 +24,7 @@ header {
 }
 
 .items-list {
-    width: 70%;
+    width: 60%;
     float: left;
 }
 
@@ -50,7 +50,7 @@ header {
 }
 
 
-/* camera item */
+/* main */
 
 .item-container {
     padding-bottom: 50px;
@@ -65,4 +65,46 @@ header {
     background-color: #328EEF;
     padding: 20px;
     font-size: 15px;
+}
+
+
+/* cart item */
+
+.cart {
+    width: 40%;
+    float: right;
+    padding-top: 20px;
+    color: white;
+}
+
+.cart-container {
+    padding: 10px;
+    background-color: #F98B1A
+}
+
+.btn-checkout {
+    width: 90%;
+    background-color: white;
+    padding: 20px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: -15px;
+}
+
+.cart-item-container {
+    color: black;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid gray;
+    border-radius: 3px;
+}
+
+.name-price-item {
+    justify-content: flex-start;
+    width: 80%;
+}
+
+.remove-btn {
+    justify-content: flex-end
 }

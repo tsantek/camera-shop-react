@@ -7,17 +7,21 @@ const Cart = ({ state, removeFromCart }) => {
     return a + b.price;
   }, 0);
   const tax = (subtotal * 0.086).toFixed(2);
-  const total = subtotal + tax;
+  const total = subtotal + parseInt(tax);
   return (
-    <div>
-      <h4>Your Cart</h4>
+    <div className="cart-container">
+      <h3>Your Cart</h3>
       {inCartItems.map(item => (
         <CartItem key={item.id} removeFromCart={removeFromCart} item={item} />
       ))}
       <p>Subtotal: ${subtotal}</p>
       <p>Tax: ${tax}</p>
-      <h4>Total: ${total}</h4>
-      <button>CHECKOUT</button>
+      <h4>
+        <bold>Total: ${total.toFixed(2)}</bold>
+      </h4>
+      <div style={{ textAlign: "center" }}>
+        <button className="btn-checkout">CHECKOUT</button>
+      </div>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const CartItem = props => {
       <div className="remove-btn">
         <i
           style={{ fontSize: "25px", paddingTop: "10px" }}
-          class="fa fa-trash-o"
+          className="fa fa-trash-o"
           onClick={() => removeFromCart(item.id)}
         />
       </div>

@@ -11,57 +11,65 @@ class App extends Component {
   };
 
   componentDidMount = async () => {
-    try {
-      const response = await cameraAPI.get("/cameras");
-      if (response.status === 200) {
+    cameraAPI
+      .get("/cameras")
+      .then(response => {
         this.setState(prevState => {
           return {
             ...prevState,
             cameras: response.data
           };
         });
-      } else {
-        throw new Error("Error");
-      }
-    } catch (e) {
-      console.log(e);
-    }
+      })
+      .catch(e => console.log(e));
   };
 
   handleAddToCart = id => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        cameras: this.state.cameras.map(camera => {
-          if (camera.id === id) {
-            return {
-              ...camera,
-              inCart: true
-            };
-          } else {
-            return camera;
-          }
+    const cartItem = this.state.cameras.filter(camera => camera.id === id);
+    cameraAPI
+      .patch(`/cameras/${id}`, { ...cartItem[0], inCart: true })
+      .then(res =>
+        this.setState(prevState => {
+          return {
+            ...prevState,
+            cameras: this.state.cameras.map(camera => {
+              if (camera.id === id) {
+                return {
+                  ...camera,
+                  inCart: true
+                };
+              } else {
+                return camera;
+              }
+            })
+          };
         })
-      };
-    });
+      )
+      .catch(e => console.log(e));
   };
 
   handleRemoveToCart = id => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        cameras: this.state.cameras.map(camera => {
-          if (camera.id === id) {
-            return {
-              ...camera,
-              inCart: false
-            };
-          } else {
-            return camera;
-          }
+    const cartItem = this.state.cameras.filter(camera => camera.id === id);
+    cameraAPI
+      .patch(`/cameras/${id}`, { ...cartItem[0], inCart: false })
+      .then(res =>
+        this.setState(prevState => {
+          return {
+            ...prevState,
+            cameras: this.state.cameras.map(camera => {
+              if (camera.id === id) {
+                return {
+                  ...camera,
+                  inCart: false
+                };
+              } else {
+                return camera;
+              }
+            })
+          };
         })
-      };
-    });
+      )
+      .catch(e => console.log(e));
   };
 
   render() {

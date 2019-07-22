@@ -16,9 +16,7 @@ const Cart = ({ state, removeFromCart }) => {
       ))}
       <p>Subtotal: ${subtotal}</p>
       <p>Tax: ${tax}</p>
-      <h4>
-        <bold>Total: ${total.toFixed(2)}</bold>
-      </h4>
+      <h4>Total: ${total.toFixed(2)}</h4>
       <div style={{ textAlign: "center" }}>
         <button className="btn-checkout">CHECKOUT</button>
       </div>

@@ -31,7 +31,7 @@ class ItemList extends Component {
   render() {
     return (
       <div>
-        <Search handleSearch={this.props.handleSearch} />
+        <Search handleSearch={this.handleSearch} />
         <ListItems
           cameras={
             this.state.search

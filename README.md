@@ -1,20 +1,8 @@
 # Q3 Camera Shop Assessment
 
-## Getting Started
-
-```
-# clone this repo
-rm -rf .git
-git init
-git add .
-git commit -m 'init'
-# create your own remote repo
-git push
-
-# clone https://github.com/gSchool/collective-api-postgres - this is the backend your app needs to CRUD from/to.
-# npm i && npm start
-```
-
+![pic 1](screenshots/1.png)
+![pic 2](screenshots/2.png)
+![pic 3](screenshots/3.png)
 
 ## Part 1
 

@@ -1,25 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import ItemList from "./components/ItemsList";
+import cameraAPI from "./api/camerasApi";
 
 class App extends Component {
+  state = {};
+
+  componentDidMount = async () => {
+    try {
+      const response = await cameraAPI.get("/cameras");
+      if (response.status === 200) {
+        this.setState({
+          cameras: response.data
+        });
+      } else {
+        throw new Error("Error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <div className="container">
+          <div className="items-list">
+            <ItemList />
+          </div>
+          <div className="">Cart</div>
+        </div>
       </div>
     );
   }

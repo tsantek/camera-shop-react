@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import ItemList from "./components/ItemsList";
+import Main from "./components/Main";
 import cameraAPI from "./api/camerasApi";
 
 class App extends Component {
-  state = {};
+  state = {
+    cameras: []
+  };
 
   componentDidMount = async () => {
     try {
       const response = await cameraAPI.get("/cameras");
       if (response.status === 200) {
-        this.setState({
-          cameras: response.data
+        this.setState(prevState => {
+          return {
+            ...prevState,
+            cameras: response.data
+          };
         });
       } else {
         throw new Error("Error");
@@ -28,7 +33,7 @@ class App extends Component {
         <Header />
         <div className="container">
           <div className="items-list">
-            <ItemList />
+            <Main state={this.state} />
           </div>
           <div className="">Cart</div>
         </div>

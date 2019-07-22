@@ -24,6 +24,45 @@ header {
 }
 
 .items-list {
-    width: 80%;
+    width: 70%;
     float: left;
+}
+
+
+/* search */
+
+.search {
+    padding-bottom: 20px;
+}
+
+.search-input {
+    font-size: 20px;
+    width: 80%;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+
+.search-input:focus {
+    outline: none;
+    border-bottom: 1px solid lightgray;
+}
+
+
+/* camera item */
+
+.item-container {
+    padding-bottom: 50px;
+}
+
+.img-camera img {
+    width: 300px;
+}
+
+.btn-add-to-cart {
+    color: white;
+    background-color: #328EEF;
+    padding: 20px;
+    font-size: 15px;
 }

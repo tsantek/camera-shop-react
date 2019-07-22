@@ -1,4 +1,5 @@
 import React from "react";
+import ReactStars from "react-stars";
 
 const Item = props => {
   const { camera, addToCart } = props;
@@ -11,7 +12,6 @@ const Item = props => {
       <div className="img-camera">
         <img src={camera.picture} alt={camera.name} />
       </div>
-
       <div className="camera-price">
         <h4>Price: ${camera.price}</h4>
       </div>
@@ -23,8 +23,15 @@ const Item = props => {
       )}
 
       <div className="camera-price">
-        <h4>Rating:</h4>
-        <h4>{camera.rating}</h4>
+        <h4 style={{ marginBottom: "5px" }}>Rating:</h4>
+        <span style={{ paddingBottom: "40px" }}>
+          <ReactStars
+            count={camera.rating}
+            size={24}
+            color2={"#ffd700"}
+            edit={false}
+          />
+        </span>
       </div>
 
       <button className="btn-add-to-cart" onClick={() => addToCart(camera.id)}>

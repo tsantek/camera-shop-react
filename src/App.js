@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loader from "react-loader-spinner";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -7,19 +8,23 @@ import Cart from "./components/Cart";
 
 class App extends Component {
   state = {
-    cameras: []
+    cameras: [],
+    isLoading: true
   };
 
   componentDidMount = async () => {
     cameraAPI
       .get("/cameras")
       .then(response => {
-        this.setState(prevState => {
-          return {
-            ...prevState,
-            cameras: response.data
-          };
-        });
+        setTimeout(() => {
+          this.setState(prevState => {
+            return {
+              ...prevState,
+              cameras: response.data,
+              isLoading: false
+            };
+          });
+        }, 1000);
       })
       .catch(e => console.log(e));
   };
@@ -75,15 +80,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div className="container">
-          <div className="items-list">
-            <Main state={this.state} addToCart={this.handleAddToCart} />
+        {this.state.isLoading ? (
+          <div className="loader">
+            <span style={{ paddingTop: "20%" }}>
+              <Loader type="Puff" color="#00BFFF" height="100" width="100" />
+            </span>
           </div>
-          <div className="cart">
-            <Cart state={this.state} removeFromCart={this.handleRemoveToCart} />
-          </div>
-        </div>
+        ) : (
+          <>
+            <Header />
+            <div className="container">
+              <div className="items-list">
+                <Main state={this.state} addToCart={this.handleAddToCart} />
+              </div>
+              <div className="cart">
+                <Cart
+                  state={this.state}
+                  removeFromCart={this.handleRemoveToCart}
+                />
+              </div>
+            </div>
+          </>
+        )}
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Item = props => {
-  const { camera } = props;
+  const { camera, addToCart } = props;
   return (
     <div className="item-container">
       <div className="camera-name">
@@ -27,7 +27,9 @@ const Item = props => {
         <h4>{camera.rating}</h4>
       </div>
 
-      <button className="btn-add-to-cart"> ADD TO CART </button>
+      <button className="btn-add-to-cart" onClick={() => addToCart(camera.id)}>
+        {!camera.inCart ? "ADD TO CART" : "IN CART"}
+      </button>
     </div>
   );
 };

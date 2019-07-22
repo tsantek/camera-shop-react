@@ -31,13 +31,14 @@ class ItemList extends Component {
   render() {
     return (
       <div>
-        <Search handleSearch={this.handleSearch} />
+        <Search handleSearch={this.props.handleSearch} />
         <ListItems
           cameras={
             this.state.search
               ? this.state.filteredItems
               : this.props.state.cameras
           }
+          addToCart={this.props.addToCart}
         />
       </div>
     );

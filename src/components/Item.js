@@ -16,6 +16,12 @@ const Item = props => {
         <h4>Price: ${camera.price}</h4>
       </div>
 
+      {camera.onSale && (
+        <div className="camera-on-sale">
+          <h4 style={{ color: "red" }}>On SALE!</h4>
+        </div>
+      )}
+
       <div className="camera-price">
         <h4>Rating:</h4>
         <h4>{camera.rating}</h4>
